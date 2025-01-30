@@ -1,2 +1,2 @@
-# posts
+# blog
 https://oliursahin.com
