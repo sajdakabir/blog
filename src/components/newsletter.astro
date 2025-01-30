@@ -1,0 +1,32 @@
+ ---
+let registered = Astro.url.searchParams.get("registered") === "true";
+let error = Astro.url.searchParams.get("error");
+---
+
+<p class="text-black">newsletter</p>
+<p style="margin-top: 1rem;" class="text-gray-500">i write short emails where i share random stuff, stories, experiences and my bookmarks.</p>
+
+<form style="margin-top: 1.5rem; display: flex; align-items: center;" method="POST">
+  <div class="relative h-11 min-w-[200px]">
+    <input
+      type="email"
+      name="email"
+      placeholder="your email address"
+      style="border: 1px solid #fffdfd; background: transparent; text-align: left; padding: 0 8px; color: black;" 
+      class="h-full w-full font-mono text-gray-500"
+    />
+  </div>
+  <button
+    type="submit"
+    style="margin-left: 10px; text-align: center;"
+    class="font-mono text-black"
+  >
+    subscribe
+  </button>
+</form>
+<!-- {
+  registered && (
+    <p class="text-sm sm:text-xs font-mono text-black">you've triggered a loop!</p>
+  )
+}
+{error && <p class="text-sm sm:text-xs font-mono text-red-500">{error}</p>} -->

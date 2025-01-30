@@ -1,0 +1,35 @@
+---
+import { getCollection } from "astro:content";
+import Container from "@components/Container.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import ArrowCard from "@components/ArrowCard.astro";
+import BackToPrev from "@components/BackToPrev.astro";
+
+const blog = (await getCollection("blog"))
+  .filter(post => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<PageLayout title="Blog" description="All posts">
+  <Container class="text-black font-mono">
+    <div class="text-black font-mono">
+      <BackToPrev href="/">
+        back
+      </BackToPrev>
+    </div>
+    <div class="space-y-12">
+      <section class="space-y-3">
+        <div class="flex flex-wrap gap-y-2 items-center justify-between">
+          <h5 class="text-black">all posts</h5>
+        </div>
+        <ul class="flex flex-col divide-neutral-100 border-neutral-100">
+          {blog.map(post => (
+            <li>
+              <ArrowCard entry={post} showSlug={true} />
+            </li>
+          ))}
+        </ul>
+      </section>
+    </div>
+  </Container>
+</PageLayout>
