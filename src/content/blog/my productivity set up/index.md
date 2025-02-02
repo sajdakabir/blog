@@ -1,6 +1,6 @@
 ---
 title: "my productivity set up"
-description: "none"
+description: ""
 date: "Oct 09 2023"
 ---
 <span class="text-525252">
