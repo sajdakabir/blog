@@ -1,32 +1,24 @@
  ---
-let registered = Astro.url.searchParams.get("registered") === "true";
 let error = Astro.url.searchParams.get("error");
 ---
 
 <p class="text-black">newsletter</p>
 <p style="margin-top: 1rem;" class="text-gray-500">i write short emails where i share random stuff, stories, experiences and my bookmarks.</p>
 
-<form style="margin-top: 1.5rem; display: flex; align-items: center;" method="POST">
-  <div class="relative h-11 min-w-[200px]">
-    <input
-      type="email"
-      name="email"
-      placeholder="your email address"
-      style="border: 1px solid #fffdfd; background: transparent; text-align: left; padding: 0 8px; color: black;" 
-      class="h-full w-full font-mono text-gray-500"
-    />
-  </div>
+<form method="POST" class="flex flex-col gap-4 mt-8">
+  <input
+    type="email"
+    name="email"
+    placeholder="your@email.com"
+    class="px-4 py-2 bg-transparent border border-[#666666] rounded-lg focus:outline-none focus:border-[#999999] text-[#666666] placeholder-[#666666]"
+  />
   <button
     type="submit"
-    style="margin-left: 10px; text-align: center;"
-    class="font-mono text-black"
+    class="px-4 py-2 bg-transparent border border-[#666666] rounded-lg text-[#666666] hover:bg-[#666666] hover:text-white transition-colors duration-300 ease-in-out"
   >
     subscribe
   </button>
 </form>
 <!-- {
-  registered && (
-    <p class="text-sm sm:text-xs font-mono text-black">you've triggered a loop!</p>
-  )
-}
-{error && <p class="text-sm sm:text-xs font-mono text-red-500">{error}</p>} -->
+  error && <p class="text-sm sm:text-xs font-mono text-red-500">{error}</p>
+} -->

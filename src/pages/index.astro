@@ -2,50 +2,27 @@
 export const prerender = false;
 
 import { getCollection } from "astro:content";
-import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import ArrowCard from "@components/ArrowCard.astro";
-import { SITE, HOME } from "@consts";
-import { SOCIALS } from "@consts";
 import Link from "@components/Link.astro";
-import Newsletter from "../components/newsletter.astro";
-import axios, { AxiosError } from "axios";
-// import { NEWSLETTER_LOOPS_API } from "astro:env/server";
+import Container from "@components/Container.astro";
 
 if (Astro.request.method === "POST") {
   const formData = await Astro.request.formData();
-  const email = formData.get("email") as string;
-
+  const email = formData.get("email")?.toString();
   if (!email) {
     return Astro.redirect(`/?error=${encodeURIComponent("Please enter an email")}`);
   }
-
-  // const api = NEWSLETTER_LOOPS_API;
-  const formBody = `email=${encodeURIComponent(email)}`;
-
-  try {
-    // const response = await axios.post(api, formBody, {
-    //   headers: {
-    //     "Content-Type": "application/x-www-form-urlencoded",
-    //   },
-    // });
-    // console.log(response.data);
-  } catch (error) {
-    const e = error as AxiosError;
-    // console.error("Error while submitting newsletter form:", e.response?.data);
-    // return Astro.redirect(`/?error=${encodeURIComponent("Failed to submit newsletter form")}`);
-  }
-
-  // return Astro.redirect("/?registered=true");
 }
 
 const blog = (await getCollection("blog"))
   .filter(post => !post.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
+  .slice(0, 3);
+
 ---
 
-<PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
+<PageLayout title="oliur sahin" description="co-maker of emptyarray">
   <Container class="font-mono text-base">
     <h4 class="font-mono pb-2">
       👋, im <Link href="https://twitter.com/oliursahin" external>oliur sahin</Link>, co-maker of <Link href="https://emptyarray.me" external>emptyarray</Link>, i grew up in <Link href="https://en.wikipedia.org/wiki/Kolkata">culcutta</Link> and half studied computer science.
@@ -65,10 +42,8 @@ const blog = (await getCollection("blog"))
           ))}
         </ul>
       </section>
-      <section class="space-y-3">
-        <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5>posts</h5>
-        </div>
+      <section class="mt-8">
+        <h3 class="font-mono text-base">posts</h3>
         <ul class="flex flex-col">
           {blog.map(post => (
             <li>
@@ -77,7 +52,6 @@ const blog = (await getCollection("blog"))
           ))}
         </ul>
       </section>
-      <!-- <Newsletter /> -->
     </div>
   </Container>
 </PageLayout>
