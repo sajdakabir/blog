@@ -13,7 +13,7 @@ export default defineConfig({
   experimental: {
     env: {
         schema: {
-            NEWSLETTER_LOOPS_API: envField.string({ context: "server", access: "secret" }),
+            // NEWSLETTER_LOOPS_API: envField.string({ context: "server", access: "secret" }),
             TWITTER_API_KEY: envField.string({ context: "server", access: "secret" }),
             TWITTER_API_SECRET: envField.string({ context: "server", access: "secret" }),
             TWITTER_ACCESS_TOKEN: envField.string({ context: "server", access: "secret" }),
