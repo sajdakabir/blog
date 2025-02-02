@@ -46,18 +46,18 @@ const blog = (await getCollection("blog"))
 ---
 
 <PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
-  <Container class="text-black font-mono text-base">
-    <h4 class="text-black font-mono pb-2">
+  <Container class="font-mono text-base">
+    <h4 class="font-mono pb-2">
       👋, im <Link href="https://twitter.com/oliursahin" external>oliur sahin</Link>, currently building <Link href="https://emptyarray.me" external>emptyarray</Link> in public, i grew up in <Link href="https://en.wikipedia.org/wiki/Kolkata">culcutta</Link> and half studied computer science.
     </h4>
     <p>i live <Link href="/blog/distributed-living">distributed</Link> and make things for people who make things— here, i inconsistently post a few of my self notes.</p>
-    <div class="space-y-12 text-black font-mono">
+    <div class="space-y-12 font-mono">
       <section></section>
       <section class="space-y-3">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="text-black">latest</h5>
+          <h5>latest</h5>
         </div>
-        <ul class="flex flex-col text-black font-mono">
+        <ul class="flex flex-col">
           {blog.slice(0, 1).map(post => (
             <li>
               <ArrowCard entry={post} />
@@ -67,9 +67,9 @@ const blog = (await getCollection("blog"))
       </section>
       <section class="space-y-3">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="text-black">posts</h5>
+          <h5>posts</h5>
         </div>
-        <ul class="flex flex-col divide-neutral-100 border-neutral-100">
+        <ul class="flex flex-col">
           {blog.map(post => (
             <li>
               <ArrowCard entry={post} />
@@ -78,27 +78,6 @@ const blog = (await getCollection("blog"))
         </ul>
       </section>
       <!-- <Newsletter /> -->
-      <section class="space-y-3">
-        <h5 class="text-black dark:text-white">get in touch</h5>
-        <article>
-          <p class="text-gray-500">best way to say hi is— twitter dm and i try to make a point to respond to every email i receive. some of my closest friends were strangers i decided to message on a whim.</p>
-        </article>
-        <ul class="flex flex-wrap gap-2">
-          {SOCIALS.map(SOCIAL => (
-            <li class="flex gap-x-2 text-nowrap">
-              <Link href={SOCIAL.HREF} external aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}>
-                {SOCIAL.NAME}
-              </Link>
-              {"/"}
-            </li>
-          ))}
-          <li class="line-clamp-1">
-            <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.NAME}`}>
-              oliursahin [at] gmail dot com
-            </Link>
-          </li>
-        </ul>
-      </section>
     </div>
   </Container>
 </PageLayout>

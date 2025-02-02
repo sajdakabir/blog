@@ -9,11 +9,13 @@ const { post } = Astro.props;
 const isDistributedLiving = post.slug === 'distributed-living';
 ---
 
-<article class="prose prose-neutral max-w-[65ch] prose-img:rounded-xl">
-  <h1>{post.data.title}</h1>
+<article class="prose prose-neutral max-w-[65ch]">
+  <h1 class="text-black">{post.data.title}</h1>
   {post.data.description && <p class="text-xl">{post.data.description}</p>}
   <hr />
-  <slot />
+  <div class="text-[#666666]">
+    <slot />
+  </div>
   {isDistributedLiving && <></>}
 </article>
 

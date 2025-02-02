@@ -1,0 +1,33 @@
+---
+import Container from "@components/Container.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import Link from "@components/Link.astro";
+import { SITE, SOCIALS } from "@consts";
+
+---
+
+<PageLayout title="get in touch" description="get in touch">
+  <Container class="font-mono">
+    <div class="space-y-3">
+      <h5>get in touch</h5>
+      <article>
+        <p>best way to say hi is— twitter dm and i try to make a point to respond to every email i receive. some of my closest friends were strangers i decided to message on a whim.</p>
+      </article>
+      <ul class="flex flex-wrap gap-2">
+        {SOCIALS.map(SOCIAL => (
+          <li class="flex gap-x-2 text-nowrap">
+            <Link href={SOCIAL.HREF} external aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}>
+              {SOCIAL.NAME}
+            </Link>
+            {"/"}
+          </li>
+        ))}
+        <li class="line-clamp-1">
+          <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.NAME}`}>
+            oliursahin [at] gmail dot com
+          </Link>
+        </li>
+      </ul>
+    </div>
+  </Container>
+</PageLayout>
