@@ -3,7 +3,6 @@ import type { HTMLTag, Polymorphic } from "astro/types";
 import type { CollectionEntry } from "astro:content";
 import FormattedDate from "../layouts/FormattedDate.astro";
 
-
 const { entry } = Astro.props;
 
 type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
@@ -14,7 +13,6 @@ type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
 
 const { as: Tag = "div", withDesc = false, showSlug = false } = Astro.props;
 const postDate = entry.data.date;
-
 ---
 
 <li class='flex flex-col gap-2 sm:flex-row sm:gap-x-4 [&_q]:basis-full decoration-black/15 hover:decoration-black/25 text-current hover:text-black transition-colors duration-300 ease-in-out border-t border-b border-neutral-100 py-2 text-base'>
@@ -25,12 +23,11 @@ const postDate = entry.data.date;
     <div class="flex flex-col">
       <a
         data-astro-prefetch
-        href={`/${entry.slug}`}
+        href={`/posts/${entry.slug}`}
         class='transition-all hover:text-muted-foreground hover:underline'
       >
         {entry.data.title}
       </a>
-      {showSlug && <span class="text-neutral-400">oliursahin.com/{entry.slug}</span>}
     </div>
     {withDesc && (
       <p class='line-clamp-3 block italic text-muted-foreground'>
