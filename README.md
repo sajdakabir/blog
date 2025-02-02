@@ -1,4 +1,4 @@
-Built with [Astro](https://astro.build).
+built with [Astro](https://astro.build).
 
 
 
