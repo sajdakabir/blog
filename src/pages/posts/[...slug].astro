@@ -25,6 +25,10 @@ const { Content } = await post.render();
 <PageLayout title={post.data.title} description={post.data.description}>
   <Container class="text-black font-mono">
     <div class="space-y-1 my-10">
+      <div class="text-2xl text-black dark:text-white">
+        {post.data.title}
+      </div>
+      
       <div class="text-black font-mono flex items-center gap-1.5">
       
         <div class="font-base text-black font-mono text-sm">
@@ -35,10 +39,7 @@ const { Content } = await post.render();
           {readingTime(post.body)}
         </div>
       </div>
-      <div class="text-2xl text-black dark:text-white">
-        {post.data.title}
-      </div>
-      
+
     </div>
     <article class="text-black dark:text-white font-mono">
       <Content />
