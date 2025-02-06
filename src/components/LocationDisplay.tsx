@@ -53,7 +53,7 @@ export default function LocationDisplay() {
   }
 
   return (
-    <div className="bg-gray-50 p-4 rounded-lg">
+    <div className="bg-gray-50 rounded-lg">
       <div className="flex flex-col space-y-1">
         <div className="flex items-baseline gap-2">
           <span className="text-red-500">📍</span>
